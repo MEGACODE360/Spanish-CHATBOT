@@ -46,22 +46,7 @@ class ContextChat(Chat):
                 while user_input[-1] in "!.": user_input = user_input[:-1]    
                 print(self.respond(user_input))
 
-# === Your code should go here ===
-
-shopping_list = []
-
-def add_to_list(item):
-    '''
-    This function adds an item to the shopping list.
-    If given item is already in the list it returns
-    False, otherwise it returns True
-    '''
-
-    if item in shopping_list:
-        return False
-    else:
-        shopping_list.append(item)
-        return True
+# === Your code should go here ==
 
 pairs = [
     [
@@ -79,8 +64,8 @@ pairs = [
 ]
 
 if __name__ == "__main__":
-    print("Hi, my name is Bob McBot and I will help you with your shopping.")
-    print("What would you like to add to your shopping list?")
+    print("Hola, mi nombre es Professor Segurado bot, ¡hazme algunas preguntas! ")
+    print("¡Hazme algunas preguntas!)
     chat = ContextChat(pairs, reflections)
     chat.converse()
     
