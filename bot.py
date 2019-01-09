@@ -79,8 +79,10 @@ pairs = [
 ]
 
 if __name__ == "__main__":
-    print("Hi, my name is Bob McBot and I will help you with your shopping.")
-    print("What would you like to add to your shopping list?")
+    print("Hi, my name is Profesora Segurado bot, and I will help you with your questions!")
+    print("Ask me a question!")
     chat = ContextChat(pairs, reflections)
     chat.converse()
     
+
+   
