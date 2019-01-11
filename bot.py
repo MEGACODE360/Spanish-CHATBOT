@@ -67,11 +67,15 @@ pairs = [
     ],
             [
         r'(.*)(Go)(.*)(bathroom)(.*)', 
-        ['If I am teaching right now, and it is important, wait until I finish, and then go. Be quick!']
+        ['If I am teaching right now, and if it is important, wait until I finish, and then go. Be quick!']
     ],
                 [
         r'(.*)(Are)(.*)(robot|bot)(.*)', 
         ['Yes, I am a chatbot.']
+    ],
+                    [
+        r'(.*)(Get)(.*)(water|drink)(.*)', 
+        ['If I am teaching right now, and if it is important, wait until I finish, and then go. Be quick!']
     ],
 
     #[
