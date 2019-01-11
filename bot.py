@@ -51,11 +51,11 @@ class ContextChat(Chat):
 pairs = [
     [
         r'(.*)(What)(.*)(name)(.*)', 
-        ['Segurado']
+        ['Me llamo Profesora Segurado bot.']
     ],
     [ 
         r'(.*)(hard)(.*)()(.*)', 
-        ["Not harder than most languages, if you focus in class it shouldn't be a problem"]
+        ["Not harder than most languages, if you focus in class it shouldn't be a problem."]
     ],
     [
         r'(.*)(Like)(.*)(spanish)(.*)', 
@@ -63,11 +63,15 @@ pairs = [
     ],
         [
         r'(.*)(Blocks)(.*)(teach)(.*)', 
-        ['My favorite class is the block 5 spanish 2.2']
+        ['My favorite class is the block 5 spanish 2.2.']
     ],
             [
         r'(.*)(Go)(.*)(bathroom)(.*)', 
         ['If I am teaching right now, and it is important, wait until I finish, and then go. Be quick!']
+    ],
+                [
+        r'(.*)(Are)(.*)(robot|bot)(.*)', 
+        ['Yes, I am a chatbot.']
     ],
 
     #[
