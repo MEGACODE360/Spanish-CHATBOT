@@ -55,11 +55,11 @@ pairs = [
     ],
     [ 
         r'(.*)(hard)(.*)()(.*)', 
-        ["if you don't study"]
+        ["Not harder than most languages, if you focus in class it shouldn't be a problem"]
     ],
     [
         r'(.*)(Like)(.*)(spanish)(.*)', 
-        ['yes']
+        ['I hope so!']
     ],
     #[
         #r'What is on the list?','
@@ -84,6 +84,3 @@ if __name__ == "__main__":
     print("¡Hazme algunas preguntas!")
     chat = ContextChat(pairs, reflections)
     chat.converse()
-
-
-
