@@ -77,6 +77,14 @@ pairs = [
         r'(.*)(Get)(.*)(water|drink)(.*)', 
         ['If I am teaching right now, and if it is important, wait until I finish, and then go. Be quick!']
     ],
+                        [
+        r'(.*)(Can)(.*)(sleep)(.*)', 
+        ['No.']
+    ],
+                            [
+        r'(.*)(Can)(.*)(eat)(.*)', 
+        ['If it is not disturbing the class.']
+    ],
 
     #[
         #r'What is on the list?','
