@@ -61,6 +61,15 @@ pairs = [
         r'(.*)(Like)(.*)(spanish)(.*)', 
         ['I hope so!']
     ],
+        [
+        r'(.*)(Blocks)(.*)(teach)(.*)', 
+        ['My favorite class is the block 5 spanish 2.2']
+    ],
+            [
+        r'(.*)(Go)(.*)(bathroom)(.*)', 
+        ['If I am teaching right now, and it is important, wait until I finish, and then go. Be quick!']
+    ],
+
     #[
         #r'What is on the list?','
     #],
