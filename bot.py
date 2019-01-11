@@ -20,7 +20,7 @@ class ContextChat(Chat):
                 
                 resp = self._wildcards(resp, match) # process wildcards
 
-                # fix munged punctuation at the end
+                # fix munged punctuation at the end3
                 if resp[-2:] == '?.': resp = resp[:-2] + '.'
                 if resp[-2:] == '??': resp = resp[:-2] + '?'
                 return resp
@@ -48,41 +48,42 @@ class ContextChat(Chat):
 
 # === Your code should go here ===
 
-shopping_list = []
-
-def add_to_list(item):
-    '''
-    This function adds an item to the shopping list.
-    If given item is already in the list it returns
-    False, otherwise it returns True
-    '''
-
-    if item in shopping_list:
-        return False
-    else:
-        shopping_list.append(item)
-        return True
-
 pairs = [
     [
-        r'(.*)(add|put)( )(.*)( )(on|to)(.*)', 
-        [lambda matches: 'Noted!' if add_to_list(matches[3]) else '%3 is already on the list!']
+        r'(.*)(What)(.*)(name)(.*)', 
+        ['Segurado']
+    ],
+    [ 
+        r'(.*)(hard)(.*)()(.*)', 
+        ["if you don't study"]
     ],
     [
-        r'What is on the list?',
-        [lambda matches: ','.join(shopping_list)],
+        r'(.*)(Like)(.*)(spanish)(.*)', 
+        ['yes']
     ],
-    [
-        r'(.*)',
-        ['I am afraid I dont understand.', 'Please focus on the shopping.'],
-    ],
+    #[
+        #r'What is on the list?','
+    #],
+ #   [
+  #      r'(.*)',
+ #      ['Creo que no comprendo.', 'Concentra-te en la clase de español porfa.', "Perdon?", "porfa perguntame sobre mi clase", "creo que no comprendo que estas deciendo",],
+  #  ],
+  #  [
+  #      r'(.*)(hard)(.*)',
+  #      ['no.']
+  #  ],
+  #  [
+  #      r'(adios)',
+  #      ['aidios chico']
 ]
 
+
+    
 if __name__ == "__main__":
-    print("Hi, my name is Profesora Segurado bot, and I will help you with your questions!")
-    print("Ask me a question!")
+    print("Hola, mi nombre es Professora Segurado bot")
+    print("¡Hazme algunas preguntas!")
     chat = ContextChat(pairs, reflections)
     chat.converse()
-    
 
-   
+
+
