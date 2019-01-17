@@ -105,6 +105,10 @@ pairs = [
         r'(.*)(What)(.*)(room)(.*)', 
         ['We are in room - - ']
     ],
+       [
+        r'(.*)(Hello)(.*)()(.*)', 
+        ['¡Hola!']
+    ],
 
     #[
         #r'What is on the list?','
