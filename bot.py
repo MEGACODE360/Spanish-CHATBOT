@@ -85,6 +85,26 @@ pairs = [
         r'(.*)(Can)(.*)(eat)(.*)', 
         ['If it is not disturbing the class.']
     ],
+    [
+        r'(.*)(When)(.*)(test)(.*)', 
+        ['You should check your class calenfar for that!']
+    ],
+    [
+        r'(.*)(What)(.*)(learning)(.*)', 
+        ['We are currently learning how to speak conversational spanish!']
+    ],
+    [
+        r'(.*)(How are you)(.*)', 
+        ['I am doing great, how about you?']
+    ],
+    [
+        r'(.*)(Who)(.*)(created|made)(.*)', 
+        ['I was created by Antonio, Alex and David from grade 10.']
+    ],
+   [
+        r'(.*)(What)(.*)(room)(.*)', 
+        ['We are in room - - ']
+    ],
 
     #[
         #r'What is on the list?','
