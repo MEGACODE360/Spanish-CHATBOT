@@ -109,6 +109,15 @@ pairs = [
         r'(.*)(Hello)(.*)()(.*)', 
         ['¡Hola!']
     ],
+           [
+        r'(.*)(Hey)(.*)()(.*)', 
+        ['¡Hola!']
+    ],
+               [
+        r'(.*)(Where)(.*)(school)(.*)', 
+        ['Warszawska 202, 05-520 Bielawa']
+    ],
+
 
     #[
         #r'What is on the list?','
