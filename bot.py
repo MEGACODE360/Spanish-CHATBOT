@@ -107,15 +107,19 @@ pairs = [
     ],
        [
         r'(.*)(Hello)(.*)()(.*)', 
-        ['¡Hola!']
+        ['¡Hola!,¡Bueno!']
     ],
            [
         r'(.*)(Hey)(.*)()(.*)', 
-        ['¡Hola!']
+        ['¡Hola!,¡Bueno!']
     ],
                [
-        r'(.*)(Where)(.*)(school)(.*)', 
-        ['Warszawska 202, 05-520 Bielawa']
+        r'(.*)()(.*)(school)(.*)', 
+        ['Warszawska 202, 05-520 Bielawa, The school is located on Warszawska 202, 05-520 Bielawa']
+    ],
+                   [
+        r'(.*)(Where)(.*)(classroom)(.*)', 
+        ['The classroom is located in the middle near the middle school office, next to the science room.']
     ],
 
 
