@@ -105,13 +105,10 @@ pairs = [
         r'(.*)(What)(.*)(room)(.*)', 
         ['We are in room - - ']
     ],
-       [
-        r'(.*)(Hello)(.*)()(.*)', 
-        ['¡Hola!,¡Bueno!']
-    ],
+
            [
-        r'(.*)(Hey)(.*)()(.*)', 
-        ['¡Hola!,¡Bueno!']
+        r'(.*)(Hey|Hello)(.*)()(.*)', 
+        ['¡Hola!,¡Bueno!,¡Buenos Dias!']
     ],
                [
         r'(.*)()(.*)(school)(.*)', 
@@ -120,6 +117,14 @@ pairs = [
                    [
         r'(.*)(Where)(.*)(classroom)(.*)', 
         ['The classroom is located in the middle near the middle school office, next to the science room.']
+    ],
+                    [
+        r'(.*)(Are)(.*)(girl)(.*)', 
+        ['No, I am a chatbot.']
+    ],
+                    [
+        r'(.*)(What)(.*)(day|class|block|lessons)(.*)', 
+        ['You can reffer to this calendar: https://calendar.google.com/calendar/embed?src=aswarsaw.org_oo26u99kpp6rlbq0ahrmnk8v14%40group.calendar.google.com&ctz=Europe/Warsaw']
     ],
 
 
@@ -145,4 +150,4 @@ if __name__ == "__main__":
     print("Hola, mi nombre es Professora Segurado bot")
     print("¡Hazme algunas preguntas!")
     chat = ContextChat(pairs, reflections)
-    chat.converse()
+    chat.convers
