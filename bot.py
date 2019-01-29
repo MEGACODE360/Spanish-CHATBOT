@@ -1,16 +1,11 @@
 from nltk.chat.util import Chat, reflections
 import re
 import random
+import requests
 import json
-
 
 # === This is the extension code for the NLTK library ===
 #        === You dont have to understand it ===
-
-import requests
-
-
-# This one is for the API, you also dont really need to understand it.
 
 class ContextChat(Chat):
     def respond(self, str):
@@ -53,17 +48,32 @@ class ContextChat(Chat):
                 while user_input[-1] in "!.": user_input = user_input[:-1]    
                 print(self.respond(user_input))
 
-# === Your code should go here ===
+# === Your code should go here === 
 
 def Translate(text):
     x = requests.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190117T111401Z.41b0b90520ee3441.a470c2577a468ca5f0498c50445d260a1f09c7c6&text=' + text + '&lang=en-es')
     resp_dict = json.loads(x.content)
     return resp_dict["text"][0]
 
+shopping_list = []
+
+def add_to_list(item):
+    '''
+    This function adds an item to the shopping list.
+    If given item is already in the list it returns
+    False, otherwise it returns True
+    '''
+
+    if item in shopping_list:
+        return False
+    else:
+        shopping_list.append(item)
+        return True
+
 pairs = [
     [
-        r'(.*)(What)(.*)(name)(.*)', 
-        ['Me llamo Profesora Segurado bot.']
+        r'(.*)(What)(.*)(your)(.*)(name)(.*)', 
+        [lambda matches: 'Me llamo Profesora Segurado bot.' if add_to_list(matches[3]) else 'I already answered that']
     ],
     [ 
         r'(.*)(hard)(.*)()(.*)', 
@@ -71,7 +81,7 @@ pairs = [
     ],
     [
         r'(.*)(Like)(.*)(spanish)(.*)', 
-        ['I hope so!']
+        ['Yes!']
     ],
         [
         r'(.*)(Blocks)(.*)(teach)(.*)', 
@@ -79,7 +89,7 @@ pairs = [
     ],
             [
         r'(.*)(Go)(.*)(bathroom)(.*)', 
-        ['If I am teaching right now, and if it is important, wait until I finish, and then go. Be quick!']
+        ['I am teaching right now, and if it is important, wait until I finish, and then go. Be quick!']
     ],
                 [
         r'(.*)(Are)(.*)(robot|bot)(.*)', 
@@ -99,11 +109,11 @@ pairs = [
     ],
     [
         r'(.*)(When)(.*)(test)(.*)', 
-        ['You should check your class calenfar for that!']
+        ['You should check your class calendar for that!']
     ],
     [
         r'(.*)(What)(.*)(learning)(.*)', 
-        ['We are currently learning how to speak conversational spanish!']
+        ['Check your google classroom. Our unit should be marked over there.']
     ],
     [
         r'(.*)(How are you)(.*)', 
@@ -119,47 +129,32 @@ pairs = [
     ],
        [
         r'(.*)(Hello)(.*)()(.*)', 
-        ['¡Hola!']
+        ['¡Hola!,¡Bueno!']
     ],
            [
         r'(.*)(Hey)(.*)()(.*)', 
-        ['¡Hola!']
+        ['¡Hola!,¡Bueno!']
     ],
                [
-        r'(.*)(Where)(.*)(school)(.*)', 
-        ['Warszawska 202, 05-520 Bielawa']
+        r'(.*)()(.*)(school)(.*)', 
+        ['Warszawska 202, 05-520 Bielawa, The school is located on Warszawska 202, 05-520 Bielawa']
+    ],
+                   [
+        r'(.*)(Where)(.*)(classroom)(.*)', 
+        ['The classroom is located in the middle near the middle school office, next to the science room.']
+    ],
+    [
+        r'(.*)',
+        ['I am afraid I dont understand.', 'Please focus on the shopping.'],
+    ],
+    [
+        r'What is on the list?',
+        [lambda matches: ','.join(shopping_list)],
     ],
     [
         r'(How do you say)( )(.*)( )(in Spanish)(.*)', 
         [lambda matches: Translate(matches[2])] 
     ],
-        [
-        r'(How)(.*)(say)(.*)( )(in Spanish)(.*)', 
-        [lambda matches: Translate(matches[2])] 
-    ],
-            [
-        r'(Translate)(.*)( )(Spanish)(.*)', 
-        [lambda matches: Translate(matches[2])] 
-    ],
-            [
-        r'(Say)(.*)( )(Spanish)(.*)', 
-        [lambda matches: Translate(matches[2])] 
-    ],
-
-    #[
-        #r'What is on the list?','
-    #],
- #   [
-  #      r'(.*)',
- #      ['Creo que no comprendo.', 'Concentra-te en la clase de español porfa.', "Perdon?", "porfa perguntame sobre mi clase", "creo que no comprendo que estas deciendo",],
-  #  ],
-  #  [
-  #      r'(.*)(hard)(.*)',
-  #      ['no.']
-  #  ],
-  #  [
-  #      r'(adios)',
-  #      ['aidios chico']
 ]
 
 
@@ -169,3 +164,11 @@ if __name__ == "__main__":
     print("¡Hazme algunas preguntas!")
     chat = ContextChat(pairs, reflections)
     chat.converse()
+
+#-----------------
+
+# work on GOOD-BYE 
+# work on API 
+# work on more questions/topics 
+# work on Context
+
