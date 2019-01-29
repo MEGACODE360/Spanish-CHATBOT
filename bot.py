@@ -1,9 +1,16 @@
 from nltk.chat.util import Chat, reflections
 import re
 import random
+import json
+
 
 # === This is the extension code for the NLTK library ===
 #        === You dont have to understand it ===
+
+import requests
+
+
+# This one is for the API, you also dont really need to understand it.
 
 class ContextChat(Chat):
     def respond(self, str):
@@ -47,6 +54,11 @@ class ContextChat(Chat):
                 print(self.respond(user_input))
 
 # === Your code should go here ===
+
+def Translate(text):
+    x = requests.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190117T111401Z.41b0b90520ee3441.a470c2577a468ca5f0498c50445d260a1f09c7c6&text=' + text + '&lang=en-es')
+    resp_dict = json.loads(x.content)
+    return resp_dict["text"][0]
 
 pairs = [
     [
@@ -105,26 +117,21 @@ pairs = [
         r'(.*)(What)(.*)(room)(.*)', 
         ['We are in room - - ']
     ],
-
+       [
+        r'(.*)(Hello)(.*)()(.*)', 
+        ['¡Hola!']
+    ],
            [
-        r'(.*)(Hey|Hello)(.*)()(.*)', 
-        ['¡Hola!,¡Bueno!,¡Buenos Dias!']
+        r'(.*)(Hey)(.*)()(.*)', 
+        ['¡Hola!']
     ],
                [
-        r'(.*)()(.*)(school)(.*)', 
-        ['Warszawska 202, 05-520 Bielawa, The school is located on Warszawska 202, 05-520 Bielawa']
+        r'(.*)(Where)(.*)(school)(.*)', 
+        ['Warszawska 202, 05-520 Bielawa']
     ],
-                   [
-        r'(.*)(Where)(.*)(classroom)(.*)', 
-        ['The classroom is located in the middle near the middle school office, next to the science room.']
-    ],
-                    [
-        r'(.*)(Are)(.*)(girl)(.*)', 
-        ['No, I am a chatbot.']
-    ],
-                    [
-        r'(.*)(What)(.*)(day|class|block|lessons)(.*)', 
-        ['You can reffer to this calendar: https://calendar.google.com/calendar/embed?src=aswarsaw.org_oo26u99kpp6rlbq0ahrmnk8v14%40group.calendar.google.com&ctz=Europe/Warsaw']
+    [
+        r'(How do you say)( )(.*)( )(in Spanish)(.*)', 
+        [lambda matches: Translate(matches[2])] 
     ],
 
 
@@ -150,4 +157,4 @@ if __name__ == "__main__":
     print("Hola, mi nombre es Professora Segurado bot")
     print("¡Hazme algunas preguntas!")
     chat = ContextChat(pairs, reflections)
-    chat.convers
+    chat.converse()
