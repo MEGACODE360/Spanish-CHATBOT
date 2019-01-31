@@ -70,10 +70,6 @@ pairs = [
         r'(.*)(What)(.*)(your)(.*)(name)(.*)', 
         [lambda matches: 'Me llamo Profesora Segurado bot.' if add_to_list(matches[3]) else 'I already answered that']
     ],
-    [
-        r'(How)( )(.*)( )(in spanish)(.*)', 
-        [lambda matches: Translate(matches[2])] 
-    ],
     [ 
         r'(.*)(hard)(.*)()(.*)', 
         ["Not harder than most languages, if you focus in class it shouldn't be a problem."]
@@ -124,27 +120,36 @@ pairs = [
     ],
    [
         r'(.*)(What)(.*)(room)(.*)', 
-        ['We are in room - - ']
+        ['We are in room M011 near the middle school office, ']
     ],
-       [
-        r'(.*)(Hello)(.*)()(.*)', 
-        ['¡Hola!,¡Bueno!']
-    ],
+
            [
         r'(.*)(Hey)(.*)()(.*)', 
-        ['¡Hola!,¡Bueno!']
+        ['¡Hola!','¡Bueno!']
     ],
                [
-        r'(.*)()(.*)(school)(.*)', 
-        ['Warszawska 202, 05-520 Bielawa, The school is located on Warszawska 202, 05-520 Bielawa']
+        r'(.*)(Where)(.*)(school)(.*)', 
+        ['Warszawska 202, 05-520 Bielawa', 'The school is located on Warszawska 202, 05-520 Bielawa']
     ],
                    [
         r'(.*)(Where)(.*)(classroom)(.*)', 
-        ['The classroom is located in the middle near the middle school office, next to the science room.']
+        ['The classroom is located in the middle near the middle school office, next to the science room, room M011, We are in room M011 near the middle school office, ']
+    ],
+           [
+        r'(.*)(you)(.*)(Good|alright|fine|okay|ok)(.*)', 
+        ['Im doing great!', 'Im doing good!', 'Everything is perfect!']
+    ],
+               [
+        r'(.*)(have|do|any)(.*)(home|hw|homework|work)(.*)', 
+        ['For anything related to homework, you can contact me at my email: "lsegurado@aswarsaw.org".  If you want to check if anything is due, check our google classroom page, make sure to click on it, and look around, as it mihgt not be listed as an assignment.']
     ],
     [
-        r'(.*)',
-        ['I am afraid I dont understand.'],
+        r'What is on the list?',
+        [lambda matches: ','.join(shopping_list)],
+    ],
+    [
+        r'(How do you say)( )(.*)( )(in Spanish)(.*)', 
+        [lambda matches: Translate(matches[2])] 
     ],
 ]
 
