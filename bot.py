@@ -37,7 +37,7 @@ class ContextChat(Chat):
             pos = response.find('%')
         return response
 
-    def converse(self, quit="bye" or "adiós" or "goodbye"):
+    def converse(self, quit="quit"):
         user_input = ""
         while user_input != quit:
             user_input = quit
@@ -58,6 +58,11 @@ def Translate(text):
 shopping_list = []
 
 def add_to_list(item):
+    '''
+    This function adds an item to the shopping list.
+    If given item is already in the list it returns
+    False, otherwise it returns True
+    '''
 
     if item in shopping_list:
         return False
@@ -143,6 +148,14 @@ pairs = [
         r'(.*)(have|do|any)(.*)(home|hw|homework|work)(.*)', 
         ['For anything related to homework, you can contact me at my email: "lsegurado@aswarsaw.org".  If you want to check if anything is due, check our google classroom page, make sure to click on it, and look around, as it mihgt not be listed as an assignment.']
     ],
+                   [
+        r'(.*)(great|good|fantastic|fine|alright|excellent|acceptable|positive|favorable|superb|super|)(.*)', 
+        ['Good!','Nice!','Perfect!']
+    ],
+                       [
+        r'(.*)(atrocious|awful|cheap|crummy|dreadful|lousy|poor|rough|sad|unacceptable|inferior|imperfect|faulty|deficient|)(.*)', 
+        ['You should sleep more']
+    ],
     [
         r'What is on the list?',
         [lambda matches: ','.join(shopping_list)],
@@ -157,14 +170,13 @@ pairs = [
     
 if __name__ == "__main__":
     print("Hola, mi nombre es Professora Segurado bot")
-    print("¡Hazme algunas preguntas!" "\n" "Se quieres acabar la conversa escribe 'bye'")
+    print("¡Hazme algunas preguntas!")
     chat = ContextChat(pairs, reflections)
     chat.converse()
 
-
-
 #-----------------
-        # To Do List:
 
-#   > work on more questions/topics 
-#   > work on Context
+# work on GOOD-BYE 
+# work on API 
+# work on more questions/topics 
+# work on Context
